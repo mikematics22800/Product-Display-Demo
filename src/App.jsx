@@ -17,10 +17,13 @@ const router = createBrowserRouter(
         {
           path: "/shopping-cart",
           element: <ShoppingCart/>
-      },
-      ]
+       },
+      ],
     }
-  ]
+  ],
+  { 
+    basename: "/Product-Display-Demo/" 
+  }
 );
 
 const App = () => {

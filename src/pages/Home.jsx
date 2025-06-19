@@ -1,36 +1,37 @@
 import { useState, useEffect } from 'react'
 import Product from '../components/Product'
-import getWalmart from '../utils/getWalmart'
+import products from '../utils/products'
 import { Link } from 'react-router-dom'
 
 function Home() {
-  const [query, setQuery] = useState('iPhone')
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [query, setQuery] = useState('')
+  const [filteredProducts, setFilteredProducts] = useState(products)
+  const [loading, setLoading] = useState(false)
 
   const handleSearch = (e) => {
     e.preventDefault()
     const searchQuery = e.target.querySelector('input').value
     setQuery(searchQuery)
     setLoading(true)
-    getWalmart(searchQuery).then((products) => {
-      setProducts(products)
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      const filtered = products.filter(product => 
+        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.details.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      setFilteredProducts(filtered)
       setLoading(false)
-    }).catch((error) => {
-      console.error('Error fetching products:', error)
-      setLoading(false)
-    })
+    }, 300)
   }
 
   useEffect(() => {
-    getWalmart(query).then((products) => {
-      setProducts(products)
-      setLoading(false)
-    })
+    setFilteredProducts(products)
   }, [])
 
-  const productList = products?.map((product) => {
+  const productList = filteredProducts?.map((product, index) => {
     return <Product 
+      key={index}
       title={product.title} 
       image={product.image} 
       price={product.price.currentPrice}

@@ -6,7 +6,7 @@ const Product = ({title, price, image, inShoppingCart}) => {
 
   const addToShoppingCart = () => {
     alert('Added to Shopping Cart!')
-    setShoppingCart([...shoppingCart, {title, price, image}])
+    setShoppingCart([...shoppingCart, {title, price: { currentPrice: price }, image}])
   }
 
   console.log(shoppingCart)
