@@ -9,13 +9,28 @@ function Home() {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    const searchQuery = e.target.queryelector('input').value
+    const searchQuery = e.target.querySelector('input').value
     setQuery(searchQuery)    
     const filtered = products.filter(product => 
       product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.details.toLowerCase().includes(searchQuery.toLowerCase())
     )
     setFilteredProducts(filtered)
+  }
+
+  const handleInputChange = (e) => {
+    const searchQuery = e.target.value
+    setQuery(searchQuery)
+    
+    if (searchQuery.trim() === '') {
+      setFilteredProducts(products)
+    } else {
+      const filtered = products.filter(product => 
+        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.details.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      setFilteredProducts(filtered)
+    }
   }
 
   useEffect(() => {
@@ -37,7 +52,11 @@ function Home() {
     <div className='home'>
       <nav>
         <form onSubmit={handleSearch}>
-          <input placeholder='Search for any product...' value={query} onChange={(e) => {setQuery(e.target.value)}}/>
+          <input 
+            placeholder='Search for any product...' 
+            value={query} 
+            onChange={handleInputChange}
+          />
         </form>
         <Link to={'/shopping-cart'}><button>Shopping Cart</button></Link>
       </nav>
