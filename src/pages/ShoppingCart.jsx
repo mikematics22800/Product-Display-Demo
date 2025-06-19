@@ -8,12 +8,15 @@ const ShoppingCart = () => {
 
   console.log('Shopping cart data:', shoppingCart)
 
-  const shoppingCartList = shoppingCart.map((product) => {
+  const shoppingCartList = shoppingCart.map((product, index) => {
     return <Product 
+      key={index}
       title={product.title} 
       image={product.image} 
       price={product.price.currentPrice}
+      details={product.details}
       inShoppingCart={true}
+      index={index}
     />
   })
   return (

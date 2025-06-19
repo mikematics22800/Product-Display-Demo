@@ -6,15 +6,13 @@ import { Link } from 'react-router-dom'
 function Home() {
   const [query, setQuery] = useState('')
   const [filteredProducts, setFilteredProducts] = useState(products)
-  const [loading, setLoading] = useState(false)
 
   const handleSearch = (e) => {
     e.preventDefault()
-    const searchQuery = e.target.querySelector('input').value
+    const searchQuery = e.target.queryelector('input').value
     setQuery(searchQuery)
     setLoading(true)
     
-    // Simulate loading delay
     setTimeout(() => {
       const filtered = products.filter(product => 
         product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -35,6 +33,7 @@ function Home() {
       title={product.title} 
       image={product.image} 
       price={product.price.currentPrice}
+      details={product.details}
       inShoppingCart={false}
     />
   })
@@ -47,7 +46,7 @@ function Home() {
         </form>
         <Link to={'/shopping-cart'}><button>Shopping Cart</button></Link>
       </nav>
-      {loading ? <h1 className='loading'>Loading...</h1> : <div className='products'>{productList}</div>}
+      <div className='products'>{productList}</div>
     </div>
   )
 }

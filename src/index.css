@@ -15,7 +15,7 @@ body {
 .product {
   display: flex;
   flex-direction: column;
-  gap: 1;
+  gap: 5px;
   width: 200px;
   align-items: center;
   margin-right: 20px;
