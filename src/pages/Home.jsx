@@ -7,17 +7,6 @@ function Home() {
   const [query, setQuery] = useState('')
   const [filteredProducts, setFilteredProducts] = useState(products)
 
-  const handleSearch = (e) => {
-    e.preventDefault()
-    const searchQuery = e.target.querySelector('input').value
-    setQuery(searchQuery)    
-    const filtered = products.filter(product => 
-      product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.details.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    setFilteredProducts(filtered)
-  }
-
   const handleInputChange = (e) => {
     const searchQuery = e.target.value
     setQuery(searchQuery)
@@ -51,13 +40,11 @@ function Home() {
   return (
     <div className='home'>
       <nav>
-        <form onSubmit={handleSearch}>
-          <input 
-            placeholder='Search for any product...' 
-            value={query} 
-            onChange={handleInputChange}
-          />
-        </form>
+        <input 
+          placeholder='Search for any product...' 
+          value={query} 
+          onChange={handleInputChange}
+        />
         <Link to={'/shopping-cart'}><button>Shopping Cart</button></Link>
       </nav>
       <div className='products'>{productList}</div>
