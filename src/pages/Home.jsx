@@ -10,17 +10,12 @@ function Home() {
   const handleSearch = (e) => {
     e.preventDefault()
     const searchQuery = e.target.queryelector('input').value
-    setQuery(searchQuery)
-    setLoading(true)
-    
-    setTimeout(() => {
-      const filtered = products.filter(product => 
-        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.details.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-      setFilteredProducts(filtered)
-      setLoading(false)
-    }, 300)
+    setQuery(searchQuery)    
+    const filtered = products.filter(product => 
+      product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.details.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    setFilteredProducts(filtered)
   }
 
   useEffect(() => {
