@@ -1,14 +1,12 @@
 import { useContext } from "react"
 import { Context } from "../App"
 
-const Product = ({title, price, image, inShoppingCart, originalProduct}) => {
+const Product = ({title, price, image, inShoppingCart}) => {
   const {shoppingCart, setShoppingCart} = useContext(Context)
 
   const addToShoppingCart = () => {
     alert('Added to Shopping Cart!')
-    // Store the original product structure if available, otherwise use the extracted values
-    const productToAdd = originalProduct || {title, price, image}
-    setShoppingCart([...shoppingCart, productToAdd])
+    setShoppingCart([...shoppingCart, {title, price, image}])
   }
 
   console.log(shoppingCart)

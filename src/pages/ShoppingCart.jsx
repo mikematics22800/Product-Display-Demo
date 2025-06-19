@@ -17,11 +17,11 @@ const ShoppingCart = () => {
     />
   })
   return (
-    <div>
+    <div className="shopping-cart">
       <nav>
         <Link to={'/'}><button>Home</button></Link>
       </nav>
-      <div className='shopping-cart'>
+      <div className='shopping-cart-list'>
         {shoppingCartList}
       </div>
     </div>

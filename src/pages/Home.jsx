@@ -1,8 +1,7 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import Product from '../components/Product'
 import getWalmart from '../utils/getWalmart'
 import { Link } from 'react-router-dom'
-import { Context } from '../App'
 
 function Home() {
   const [query, setQuery] = useState('iPhone')
@@ -32,11 +31,11 @@ function Home() {
 
   const productList = products?.map((product) => {
     return <Product 
-        title={product.title} 
-        image={product.image} 
-        price={product.price.currentPrice}
-        inShoppingCart={false}
-      />
+      title={product.title} 
+      image={product.image} 
+      price={product.price.currentPrice}
+      inShoppingCart={false}
+    />
   })
 
   return (
