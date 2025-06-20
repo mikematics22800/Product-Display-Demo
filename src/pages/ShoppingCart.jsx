@@ -16,9 +16,9 @@ const ShoppingCart = () => {
       price={product.price.currentPrice}
       details={product.details}
       inShoppingCart={true}
-      index={index}
     />
   })
+  
   return (
     <div className="shopping-cart">
       <nav>

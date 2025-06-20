@@ -22,10 +22,6 @@ function Home() {
     }
   }
 
-  useEffect(() => {
-    setFilteredProducts(products)
-  }, [])
-
   const productList = filteredProducts?.map((product, index) => {
     return <Product 
       key={index}
